@@ -22,7 +22,7 @@ public class EnviarMail {
     // Correo al que enviaremos el mensaje
     private static String destintatarioCorreo = "carmenk74@hotmail.com";//"leo.tomalo@gmail.com";
 
-    public static void main(String[] args) throws MessagingException {
+  //  public static void main(String[] args) throws MessagingException {
 
         // Ajustamos primero las properties
        /* properties = System.getProperties();
@@ -37,9 +37,9 @@ public class EnviarMail {
        // session = Session.getDefaultInstance(properties, null);
 
        // enviarMensaje("Hola Dionis","Prueba cliente correo, buen fin de semana. Sergi Barola");
-    }
+    //}
 
-    public static void enviarMensaje(String subject, String content) throws MessagingException {
+    /*public static void enviarMensaje(String subject, String content) throws MessagingException {
         // Ajustamos primero las properties
         properties = System.getProperties();
         properties.setProperty("mail.transport.protocol", "smtps");
@@ -71,7 +71,40 @@ public class EnviarMail {
         System.out.println("--------------------------");
         System.out.println("Mensaje enviado");
         System.out.println("---------------------------");
-    }
+    }*/
+    public static void enviarMensaje(String subject, String content) throws MessagingException {
+        try
+        {
+            // Propiedades de la conexión
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.user", "lopcarmen45@gmail.com");
+            props.setProperty("mail.smtp.auth", "true");
 
+            // Preparamos la sesion
+            Session session = Session.getDefaultInstance(props);
+            session.setDebug(true);
+
+            // Construimos el mensaje
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("lopcarmen45@gmail.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("alvaroyturburo@hotmail.com")); //a.yturburo@turismosantaelena.com
+            message.setSubject("Hola");
+            message.setText(subject + " " + content );
+
+            // Lo enviamos.
+            Transport t = session.getTransport("smtp");
+            t.connect("lopcarmen45@gmail.com", "16101993");
+            t.sendMessage(message, message.getAllRecipients());
+            // Cierre.
+            t.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }
