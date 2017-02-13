@@ -10,39 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.carme_000.contrasenia.recupera_pwd">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="98dp"
-        android:id="@+id/et1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_height="50dp"
-        android:layout_below="@+id/et1"
-        android:layout_alignLeft="@+id/et1"
-        android:layout_alignStart="@+id/et1"
-        android:layout_marginTop="72dp"
-        android:id="@+id/tv1"
-        android:layout_width="300dp" />
-
     <Button
         android:text="@string/enviar_correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="176dp"
         android:id="@+id/enviar_correo"
         android:onClick="mostrar"
-        android:layout_below="@+id/tv1"
-        android:layout_alignLeft="@+id/tv1"
-        android:layout_alignStart="@+id/tv1" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
